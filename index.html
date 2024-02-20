@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lí sinh viên</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Danh sách sinh viên</h1>
+    <button onclick="showForm()">Thêm sinh viên</button>
+    <div class="form-container" id="form-container">
+        <h2>Thông tin sinh viên</h2>
+        <form id="studentForm">
+            <label for="studentId">Mã số sinh viên:</label><br>
+            <input type="text" id="studentId" name="studentId"><br>
+            <label for="fullName">Họ và tên:</label><br>
+            <input type="text" id="fullName" name="fullName"><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br>
+            <label for="dob">Ngày sinh:</label><br>
+            <input type="text" id="dob" name="dob"><br>
+            <label for="hometown">Quê quán:</label><br>
+            <input type="text" id="hometown" name="hometown"><br>
+            <label for="grade">Điểm tổng kết:</label><br>
+            <input type="text" id="grade" name="grade"><br><br>
+            <button type="button" onclick="addStudent()">Thêm</button>
+            <button type="button" onclick="updateStudent()">Cập nhật</button>
+            <button type="button" onclick="cancel()">Hủy</button>
+        </form>
+    </div>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Mã số sinh viên</th>
+                <th>Họ và tên</th>
+                <th>Email</th>
+                <th>Ngày sinh</th>
+                <th>Quê quán</th>
+                <th>Điểm tổng kết</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody id="studentList">
+            <!-- Dữ liệu sinh viên sẽ được thêm vào đây bằng JavaScript -->
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
