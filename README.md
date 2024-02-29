@@ -10,8 +10,8 @@ Xây dựng website quản lý sinh viên:
 BE: plumber
 
 Đề 6 nhóm 6 (FE2)
-Api trả về thông tin sinh viên dạng xml
-Chương trình crawl dữ liệu sử dụng api
-Lưu dữ liệu vào excel file.
+- Api trả về thông tin sinh viên dạng xml
+- Chương trình crawl dữ liệu sử dụng api
+- Lưu dữ liệu vào excel file.
 
 FE: Call API
