@@ -22,7 +22,7 @@ function() {
 #* @param ngay_sinh
 #* @param que
 #* @param diem_tong_ket
-#* @get /add
+#* @post /add
 function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
   query = paste0("INSERT INTO sinh_vien (ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket) 
                  VALUES (", as.character(ma_sv), 
@@ -41,7 +41,7 @@ function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
 
 #* Delete hoc_sinh theo ma_sv
 #* @param ma_sv
-#* @get /delete
+#* @post /delete
 function(ma_sv){
   query = paste0("DELETE FROM sinh_vien WHERE ma_sv=",ma_sv)
   dbExecute(conn, query)
@@ -56,7 +56,7 @@ function(ma_sv){
 #* @param ngay_sinh
 #* @param que
 #* @param diem_tong_ket
-#* @get /sua
+#* @post /sua
 function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
   query = paste0("UPDATE sinh_vien
                  SET ho_ten = '", ho_ten, "', 
@@ -67,4 +67,18 @@ function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
                  WHERE ma_sv = ",ma_sv)
   dbExecute(conn, query)
   list(status = "Successfully")
+}
+
+
+# VD plumber để test
+#* Endpoint đơn giản trả về "Hello, world!"
+#* @get /hello
+function(){
+  return("Hello world!")
+}
+
+#* @filter cors
+cors <- function(res) {
+  res$setHeader("Access-Control-Allow-Origin", "*")
+  plumber::forward()
 }

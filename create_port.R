@@ -1,5 +1,9 @@
 library(plumber)
 
 # Path to API definition
-plumb("api.R") |>
-  pr_run(port = 8000) # Specify API port
+r <- plumb("api.R")
+
+#r$setHeader("Access-Control-Allow-Origin", "*")
+
+r$run(port = 8000) # Specify API port
+
