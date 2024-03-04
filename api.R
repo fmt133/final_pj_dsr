@@ -1,5 +1,6 @@
 library(plumber)
 library(RSQLite)
+library(xmlconvert)
 
 conn <- dbConnect(RSQLite::SQLite(), "sinh_vien.db")
 df <- dbGetQuery(conn, "SELECT * FROM sinh_vien")
@@ -13,6 +14,7 @@ df <- dbGetQuery(conn, "SELECT * FROM sinh_vien")
 function() {
   df
 }
+
 
 
 #* Add hoc_sinh to db
@@ -70,15 +72,19 @@ function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
 }
 
 
-# VD plumber để test
-#* Endpoint đơn giản trả về "Hello, world!"
-#* @get /hello
-function(){
-  return("Hello world!")
-}
 
-#* @filter cors
-cors <- function(res) {
+#' @filter cors
+cors <- function(req, res) {
+  
   res$setHeader("Access-Control-Allow-Origin", "*")
-  plumber::forward()
+  
+  if (req$REQUEST_METHOD == "OPTIONS") {
+    res$setHeader("Access-Control-Allow-Methods","*")
+    res$setHeader("Access-Control-Allow-Headers", req$HTTP_ACCESS_CONTROL_REQUEST_HEADERS)
+    res$status <- 200 
+    return(list())
+  } else {
+    plumber::forward()
+  }
+  
 }
