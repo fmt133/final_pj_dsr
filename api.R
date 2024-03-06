@@ -1,9 +1,8 @@
 library(plumber)
 library(RSQLite)
-library(xmlconvert)
 
 conn <- dbConnect(RSQLite::SQLite(), "sinh_vien.db")
-df <- dbGetQuery(conn, "SELECT * FROM sinh_vien")
+
 
 
 #* @apiTitle Plumber API
@@ -12,9 +11,9 @@ df <- dbGetQuery(conn, "SELECT * FROM sinh_vien")
 #* Send data
 #* @get /df
 function() {
+  df <- dbGetQuery(conn, "SELECT * FROM sinh_vien")
   df
 }
-
 
 
 #* Add hoc_sinh to db
@@ -43,7 +42,7 @@ function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
 
 #* Delete hoc_sinh theo ma_sv
 #* @param ma_sv
-#* @post /delete
+#* @delete /delete
 function(ma_sv){
   query = paste0("DELETE FROM sinh_vien WHERE ma_sv=",ma_sv)
   dbExecute(conn, query)
@@ -58,7 +57,7 @@ function(ma_sv){
 #* @param ngay_sinh
 #* @param que
 #* @param diem_tong_ket
-#* @post /sua
+#* @put /sua
 function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
   query = paste0("UPDATE sinh_vien
                  SET ho_ten = '", ho_ten, "', 
@@ -70,7 +69,6 @@ function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
   dbExecute(conn, query)
   list(status = "Successfully")
 }
-
 
 
 #' @filter cors
@@ -88,3 +86,4 @@ cors <- function(req, res) {
   }
   
 }
+
