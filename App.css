@@ -11,15 +11,21 @@
   margin-bottom: 20px;
 }
 
+/* Styling for table */
 table {
-  margin: 20px auto;
   border-collapse: collapse;
+  margin: 20px auto;
 }
 
 th, td {
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd;
+  text-align: left;
   padding: 8px;
   width: 200px; /* Cố định chiều rộng cột */
+}
+
+th {
+  background-color: #f2f2f2;
 }
 
 
@@ -35,7 +41,7 @@ th, td {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #192f5d;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -94,4 +100,18 @@ th, td {
   cursor: pointer;
 }
 
+/* Styling for buttons */
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #c86417;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #a06b37;
+}
 
