@@ -36,7 +36,7 @@ function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
 
   dbExecute(conn, query)
   
-  list(status = "Successfully")
+  list(status = "Add Successfully")
 }
 
 
@@ -46,18 +46,18 @@ function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
 function(ma_sv){
   query = paste0("DELETE FROM sinh_vien WHERE ma_sv=",ma_sv)
   dbExecute(conn, query)
-  list(status = "Successfully")
+  list(status = "Delete Successfully")
 }
 
 
-#* Sua theo ma_sv
+#* Update theo ma_sv
 #* @param ma_sv
 #* @param ho_ten
 #* @param email
 #* @param ngay_sinh
 #* @param que
 #* @param diem_tong_ket
-#* @put /sua
+#* @put /update
 function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
   query = paste0("UPDATE sinh_vien
                  SET ho_ten = '", ho_ten, "', 
@@ -67,7 +67,16 @@ function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
                      diem_tong_ket = ", diem_tong_ket, "
                  WHERE ma_sv = ",ma_sv)
   dbExecute(conn, query)
-  list(status = "Successfully")
+  list(status = "Update Successfully")
+}
+
+
+#' @get /data_csv
+#' @serializer csv
+function() {
+  df <- dbGetQuery(conn, "SELECT * FROM sinh_vien")
+  # will cause the file to be saved as `iris.csv`, not `data` or `data.csv`
+  as_attachment(df, "sinh_vien.csv")
 }
 
 
