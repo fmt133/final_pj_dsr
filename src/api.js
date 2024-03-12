@@ -1,4 +1,4 @@
-// api.js
+// Call api
 
 export const fetchData = async () => {
     try {
@@ -9,55 +9,51 @@ export const fetchData = async () => {
       console.error('Error fetching data:', error);
     }
   };
-  
-  export const addStudent = async (newStudent) => {
-    try {
-      const response = await fetch('http://localhost:8000/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newStudent)
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error adding student:', error);
-    }
-  };
-  
-  export const deleteStudent = async (ma_sv) => {
-    try {
-      const response = await fetch('http://localhost:8000/delete', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ ma_sv })
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error deleting student:', error);
-    }
-  };
-  
-  export const updateStudent = async (ma_sv, updatedStudent) => {
-    try {
-      const response = await fetch('http://localhost:8000/update', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          ma_sv,
-          ...updatedStudent
-        })
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error updating student:', error);
-    }
-  };
-  
+
+export const addStudent = async (newStudent) => {
+  try {
+    const response = await fetch('http://localhost:8000/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newStudent)
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error adding student:', error);
+  }
+};
+
+export const deleteStudent = async (ma_sv) => {
+  try {
+    const response = await fetch('http://localhost:8000/delete', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ ma_sv })
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error deleting student:', error);
+  }
+};
+
+export const updateStudent = async (updatedStudent) => {
+  try {
+    const response = await fetch('http://localhost:8000/update', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedStudent)
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error updating student:', error);
+  }
+};
