@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { fetchData, addStudent, deleteStudent, updateStudent } from './api';
-import DownloadButton from './download_csv';
+import DownloadButton from './studentsCSV'
 
 const App = () => {
   const [students, setStudents] = useState([]);
@@ -149,8 +149,7 @@ const App = () => {
             <h2>Add Student</h2>
             <form>
               {/* Input fields for new student */}
-              <label>
-                Student ID:
+              <label>Student ID:
                 <input
                   type="text"
                   name="ma_sv"
@@ -159,55 +158,55 @@ const App = () => {
                 />
               </label>
               <br />
-              <label>
-                Name:
-                <input
-                  type="text"
-                  name="ho_ten"
-                  value={studentInfo.ho_ten}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <br />
-              <label>
-                Email:
-                <input
-                  type="text"
-                  name="email"
-                  value={studentInfo.email}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <br />
-              <label>
-                Date of Birth:
-                <input
-                  type="text"
-                  name="ngay_sinh"
-                  value={studentInfo.ngay_sinh}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <br />
-              <label>
-                Address:
-                <input
-                  type="text"
-                  name="que"
-                  value={studentInfo.que}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <br />
-              <label>
-                Total Score:
-                <input
-                  type="text"
-                  name="diem_tong_ket"
-                  value={studentInfo.diem_tong_ket}
-                  onChange={handleInputChange}
-                />
-              </label>
+                <label>
+                  Name:
+                  <input
+                    type="text"
+                    name="ho_ten"
+                    value={studentInfo.ho_ten}
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <br />
+                <label>
+                  Email:
+                  <input
+                    type="text"
+                    name="email"
+                    value={studentInfo.email}
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <br />
+                <label>
+                  Date of Birth:
+                  <input
+                    type="date"
+                    name="ngay_sinh"
+                    value={studentInfo.ngay_sinh}
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <br />
+                <label>
+                  Address:
+                  <input
+                    type="text"
+                    name="que"
+                    value={studentInfo.que}
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <br />
+                <label>
+                  Total Score:
+                  <input
+                    type="text"
+                    name="diem_tong_ket"
+                    value={studentInfo.diem_tong_ket}
+                    onChange={handleInputChange}
+                  />
+                </label>
               <br />
               <button type="button" onClick={handleAddStudent}>Add Student</button>
             </form>
@@ -256,7 +255,7 @@ const App = () => {
               <label>
                 Date of Birth:
                 <input
-                  type="text"
+                  type="date"
                   name="ngay_sinh"
                   value={studentInfo.ngay_sinh}
                   onChange={handleInputChange}
