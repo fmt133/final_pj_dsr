@@ -75,9 +75,44 @@ function(ma_sv, ho_ten, email, ngay_sinh, que, diem_tong_ket){
 #' @serializer csv
 function() {
   df <- dbGetQuery(conn, "SELECT * FROM sinh_vien")
-  # will cause the file to be saved as `iris.csv`, not `data` or `data.csv`
+  
   as_attachment(df, "sinh_vien.csv")
 }
+
+
+library(XML)
+
+df_to_xml <- function(df, root_name = "data", row_name = "row") {
+  xml_data <- newXMLDoc()
+  
+  root_node <- newXMLNode(root_name, doc = xml_data)
+  
+  for (i in 1:nrow(df)) {
+    row_node <- newXMLNode(row_name, parent = root_node)
+    for (j in 1:ncol(df)) {
+      newXMLNode(names(df)[j], as.character(df[i, j]), parent = row_node)
+    }
+  }
+  
+  return(xml_data)
+}
+
+
+#* @serializer contentType list(type="application/xml")
+#* @get /date_xml
+function(){
+  df <- dbGetQuery(conn, "SELECT * FROM sinh_vien")
+  
+  # Convert data frame to XML
+  xml_data <- df_to_xml(df)
+  
+  # Convert XML to character string
+  xml_str <- capture.output(xml_data)
+  
+  return(xml_data)
+}
+
+
 
 
 #' @filter cors
@@ -95,4 +130,3 @@ cors <- function(req, res) {
   }
   
 }
-
