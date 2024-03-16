@@ -99,7 +99,7 @@ df_to_xml <- function(df, root_name = "data", row_name = "row") {
 
 
 #* @serializer contentType list(type="application/xml")
-#* @get /date_xml
+#* @get /data_xml
 function(){
   df <- dbGetQuery(conn, "SELECT * FROM sinh_vien")
   
