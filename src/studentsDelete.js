@@ -4,6 +4,8 @@ import { deleteStudent } from './api';
 const DeleteStudent = ({ fetchData }) => {
   const [deleteMaSV, setDeleteMaSV] = useState('');
 
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   const handleDeleteInputChange = event => {
     setDeleteMaSV(event.target.value);
   };
@@ -14,8 +16,6 @@ const DeleteStudent = ({ fetchData }) => {
     setDeleteMaSV('');
     setShowDeleteModal(false)
   };
-
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   return (
     <div>

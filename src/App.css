@@ -116,3 +116,9 @@ button {
 button:hover {
   background-color: #a06b37;
 }
+
+.container {
+  display: flex; /* Sử dụng Flexbox */
+  padding: 0 50px; /* Thêm lề bên trái và bên phải 20px */
+  width: 100%;
+}

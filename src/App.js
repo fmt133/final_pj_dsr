@@ -22,10 +22,12 @@ const App = () => {
     <div>
       <h1>Student Information</h1>
       <ShowStudent students={students} />
-      <AddStudent fetchData={handleFetchData} />
-      <DeleteStudent fetchData={handleFetchData} />
-      <UpdateStudent fetchData={handleFetchData} />
-      <DownloadButton />
+      <div className='container'>
+        <AddStudent fetchData={handleFetchData} />
+        <DeleteStudent fetchData={handleFetchData} />
+        <UpdateStudent fetchData={handleFetchData} /> 
+        <DownloadButton />
+      </div>
     </div>
   );
 };
